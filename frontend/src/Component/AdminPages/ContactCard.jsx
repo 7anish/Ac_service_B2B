@@ -8,7 +8,6 @@ import { useState } from "react";
 const ContactCard = ({Name ,  PHno , email , mess , id}) => {
     const [isupdatestatus , setisupdatestatus] = useState(false)
     const updatestatus =async ()=>{
-        console.log("gsej")
         try {
             const token = (document.cookie?.split('; ')?.find((ele) => {
                 return ele?.split('=')[0] == "csdtpls"

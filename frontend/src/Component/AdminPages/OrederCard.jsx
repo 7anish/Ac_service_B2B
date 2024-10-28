@@ -1,3 +1,4 @@
+import React , {useState} from "react";
 import axios from "axios";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt, FaBuilding } from "react-icons/fa";
@@ -11,6 +12,7 @@ import { FaHammer } from "react-icons/fa6";
 
 
 const OrderCard = ({name ,  phonenumber , gmail , pincode , city , servicetype , address , houseNo , landmark ,service, id}) => {
+    const [isupdatestatus , setisupdatestatus] = useState(false)
     const updatestatus =async ()=>{
         try {
             const token = (document.cookie?.split('; ')?.find((ele) => {
@@ -43,10 +45,17 @@ const OrderCard = ({name ,  phonenumber , gmail , pincode , city , servicetype ,
         <h3 className='flex justify-start items-center text-sm font-semibold gap-1'><MdEmail />{gmail}</h3>
         <h3 className='flex justify-start items-center text-sm font-semibold gap-1'><FaHammer />{`Service For-"${service}"`}</h3>
         <h3 className='flex justify-start items-center text-sm font-semibold gap-1'><MdHomeRepairService />{`Service Type-"${servicetype}"`}</h3>
-        <h3 className='flex justify-start items-center text-sm font-semibold gap-1'><FaBuilding/>{`${address},${city} , ${pincode}`}</h3>
+        <h3 className='flex justify-start items-start text-sm font-semibold gap-1'><FaBuilding size={26}/>{`${address},${city} , ${pincode}`}</h3>
         <h3 className='flex justify-start items-center text-sm font-semibold gap-1'><BsFillFlagFill />{`${houseNo} , ${landmark}`}</h3>
         <h3 className='flex justify-start items-center text-sm font-semibold gap-1'></h3>
-        <button className={`w-[98%] h-10 p-2 font-roboto  mt-3  bg-[#4BB543] cursor-pointer font-semibold text-lg text-white rounded-md`} onClick={updatestatus}>Done</button>
+        <button className={`w-[98%] h-10 p-2 font-roboto  mt-3  bg-${isupdatestatus ? '[#4BB543]' : '[#fb823f]'} cursor-pointer font-semibold text-lg text-white rounded-md`} onClick={updatestatus}>
+            {
+                isupdatestatus ? 
+                "Updated"
+                :
+                "Done"
+            }
+        </button>
       </div>
     )
 }
