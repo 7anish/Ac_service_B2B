@@ -39,7 +39,7 @@ const OrderCard = ({name ,  phonenumber , gmail , pincode , city , servicetype ,
         }
     }
     return (
-      <div className='w-[270px] sm:w-[320px] h-[350px]  shadow-card bg-white rounded-xl z-10 p-5 flex flex-col gap-2 justify-evenly'>
+      <div className='w-[270px] sm:w-[320px] h-[370px]  shadow-card bg-white rounded-xl z-10 p-5 flex flex-col gap-2 justify-evenly'>
         <h3 className='flex justify-start items-center text-sm font-semibold gap-1'><IoPerson />{name}</h3>
         <h3 className='flex justify-start items-center text-sm font-semibold gap-1'><FaPhoneAlt />{`+91 ${phonenumber}`}</h3>
         <h3 className='flex justify-start items-center text-sm font-semibold gap-1'><MdEmail />{gmail}</h3>

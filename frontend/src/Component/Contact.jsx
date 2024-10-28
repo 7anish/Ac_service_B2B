@@ -124,7 +124,7 @@ const Contact = () => {
                     </div>
 
                     <form class="bg-gray-50 p-5 lg:p-11" onSubmit={(e)=> sumbitForm(e)}>
-                        <h2 class="text-orange-500 text-3xl sm:text-4xl font-semibold leading-10 mb-11 font-popines">Send Us A Message</h2>
+                        <h2 class="text-orange-500 text-2xl sm:text-4xl font-semibold leading-10 mb-11 font-popines">Send Us A Message</h2>
                         <input name='name' type="text" class="w-full h-12 text-gray-600 placeholder-gray-400  shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Name" />
                         <input name='mail' type="text" class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Email" />
                         <input name='Phone' type="text" class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Phone" />
