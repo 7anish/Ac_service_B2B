@@ -19,7 +19,7 @@ const Hero = () => {
       infiniteLoop={true}
       stopOnHover={false}
       swipeable={true}
-      className='w-full h-[45vh] sm:h-[80vh] object-cover'
+      className='w-full h-[50vh] sm:h-[80vh] object-cover'
       renderArrowPrev={(onClickHandler, hasPrev, label) =>
                 hasPrev && <Arrows onClick={onClickHandler} direction="left"  />
             }
@@ -28,25 +28,25 @@ const Hero = () => {
             }
       >
       <div className='w-full h-full relative'>
-        <img className='w-full h-[45vh] sm:h-[80vh] brightness-75 md:brightness-90' src={img1} />
-        <div className='sm:w-[80%] md:w-[48%] h-full flex flex-col items-start justify-center pl-3 sm:pl-10 absolute top-0 gap-3 sm:gap-8'>
-          <h1 className='text-4xl md:text-6xl font-semibold font-popines text-start text-white sm:text-[#190d06]'>Book AC Installation Service <span className='text-[#fb823f]'>In Delhi NCR</span> By Professional</h1>
+        <img className='w-full h-[50vh] sm:h-[80vh] brightness-50 md:brightness-90' src={img1} />
+        <div className='sm:w-[80%] md:w-[48%] h-full flex flex-col items-start justify-center pl-3 px-3 sm:px-0 sm:pl-10 absolute top-0 gap-3 sm:gap-8'>
+          <h1 className='text-3xl md:text-6xl font-semibold font-popines text-start text-white sm:text-[#190d06]'>Book AC Installation Service <span className='text-[#fb823f]'>In Delhi NCR</span> By Professional</h1>
           <p className='text-sm sm:text-sm md:text-lg text-start font-roboto'>Welcome to Installation World - one-call for delhi NCR best home appliances service at your doorstep we providing ac service, ac repair.</p>
           <HashLink to={'/#services'}><button className='p-2 md:p-3 px-4 md:px-10 hover:bg-[#004E89] duration-300 bg-[#ff8f33] text-white  rounded-xl text-sm md:text-lg font-bold self-baseline font-roboto'>Service</button></HashLink>
         </div>
       </div>
       <div className='w-full h-full relative'>
-        <img className='w-full h-[45vh] sm:h-[80vh] brightness-75 md:brightness-90' src={img3} />
-        <div className='sm:w-[80%] md:w-[48%] h-full flex flex-col items-start justify-center pl-3 sm:pl-10 absolute top-0 gap-3 sm:gap-8'>
-          <h1 className='text-4xl md:text-6xl font-semibold font-popines text-start text-white sm:text-[#190d06]'>Book AC Installation Service <span className='text-[#fb823f]'>In Delhi NCR</span> By Professional</h1>
+        <img className='w-full h-[50vh] sm:h-[80vh] brightness-50 md:brightness-90' src={img3} />
+        <div className='sm:w-[80%] md:w-[48%] h-full flex flex-col items-start justify-center pl-3 px-3 sm:px-0 sm:pl-10 absolute top-0 gap-3 sm:gap-8'>
+          <h1 className='text-3xl md:text-6xl font-semibold font-popines text-start text-white sm:text-[#190d06]'>Book AC Installation Service <span className='text-[#fb823f]'>In Delhi NCR</span> By Professional</h1>
           <p className='text-sm sm:text-sm md:text-lg text-start font-roboto'>Welcome to Installation World - one-call for delhi NCR best home appliances service at your doorstep we providing ac service, ac repair.</p>
           <HashLink to={'/#services'}><button className='p-2 md:p-3 px-4 md:px-10 hover:bg-[#004E89] duration-300 bg-[#ff8f33] text-white  rounded-xl text-sm md:text-lg font-bold self-baseline font-roboto'>Service</button></HashLink>
         </div>
       </div>
       <div className='w-full h-full relative'>
-        <img className='w-full h-[45vh] sm:h-[80vh] brightness-75 md:brightness-90' src={img4} />
-        <div className='sm:w-[80%] md:w-[48%] h-full flex flex-col items-start justify-center pl-3 sm:pl-10 absolute top-0 gap-3 sm:gap-8'>
-          <h1 className='text-4xl md:text-6xl font-semibold font-popines text-start text-white sm:text-[#190d06]'>Book AC Installation Service <span className='text-[#fb823f]'>In Delhi NCR</span> By Professional</h1>
+        <img className='w-full h-[50vh] sm:h-[80vh] brightness-50 md:brightness-90' src={img4} />
+        <div className='sm:w-[80%] md:w-[48%] h-full flex flex-col items-start justify-center pl-3 px-3 sm:px-0 sm:pl-10 absolute top-0 gap-3 sm:gap-8'>
+          <h1 className='text-3xl md:text-6xl font-semibold font-popines text-start text-white sm:text-[#190d06]'>Book AC Installation Service <span className='text-[#fb823f]'>In Delhi NCR</span> By Professional</h1>
           <p className='text-sm sm:text-sm md:text-lg text-start font-roboto'>Welcome to Installation World - one-call for delhi NCR best home appliances service at your doorstep we providing ac service, ac repair.</p>
           <HashLink to={'/#services'}><button className='p-2 md:p-3 px-4 md:px-10 hover:bg-[#004E89] duration-300 bg-[#ff8f33] text-white  rounded-xl text-sm md:text-lg font-bold self-baseline font-roboto'>Service</button></HashLink>
         </div>
