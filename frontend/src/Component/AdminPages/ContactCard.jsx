@@ -14,7 +14,7 @@ const ContactCard = ({Name ,  PHno , email , mess , id}) => {
                 return ele?.split('=')[0] == "csdtpls"
             }))?.split('=')[1]
 
-            const res = await axios.patch(`http://localhost:8000/api/v1/contact/updatestatus/${id}`, {
+            const res = await axios.patch(`https://acservice-production.up.railway.app/api/v1/contact/updatestatus/${id}`, {
                 headers: {
                     "Authorization": "Bearer " + token
                 }

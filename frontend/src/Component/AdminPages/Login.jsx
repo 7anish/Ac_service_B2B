@@ -38,7 +38,7 @@ const Adminlogin = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:8000/api/v1/admin/loginasadmin", details)
+      const res = await axios.post("https://acservice-production.up.railway.app/api/v1/admin/loginasadmin", details)
 
       if (res.status == 200) {
         const date = new Date();

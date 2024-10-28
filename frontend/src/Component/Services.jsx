@@ -116,7 +116,7 @@ const Services = () => {
             return
         }
         try {
-            const res = await axios.post("http://localhost:8000/api/v1/order/createorder", detail)
+            const res = await axios.post("https://acservice-production.up.railway.app/api/v1/order/createorder", detail)
 
             if (res.status == 201) {
                 Swal.fire({

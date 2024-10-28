@@ -24,7 +24,7 @@ const Admindashboad = () => {
                 return ele?.split('=')[0] == "csdtpls"
             }))?.split('=')[1]
 
-            const res = await axios.get("http://localhost:8000/api/v1/contact/getcontactlist", {
+            const res = await axios.get("https://acservice-production.up.railway.app/api/v1/contact/getcontactlist", {
                 headers: {
                     "Authorization": "Bearer " + token
                 }
@@ -46,7 +46,7 @@ const Admindashboad = () => {
                 return ele?.split('=')[0] == "csdtpls"
             }))?.split('=')[1]
 
-            const res = await axios.get("http://localhost:8000/api/v1/order/getallorder", {
+            const res = await axios.get("https://acservice-production.up.railway.app/api/v1/order/getallorder", {
                 headers: {
                     "Authorization": "Bearer " + token
                 }

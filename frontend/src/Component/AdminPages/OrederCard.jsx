@@ -17,7 +17,7 @@ const OrderCard = ({name ,  phonenumber , gmail , pincode , city , servicetype ,
                 return ele?.split('=')[0] == "csdtpls"
             }))?.split('=')[1]
 
-            const res = await axios.patch(`http://localhost:8000/api/v1/order/updateorder/${id}`, {
+            const res = await axios.patch(`https://acservice-production.up.railway.app/api/v1/order/updateorder/${id}`, {
                 headers: {
                     "Authorization": "Bearer " + token
                 }
