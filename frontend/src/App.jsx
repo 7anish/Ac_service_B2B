@@ -4,11 +4,20 @@ import { BrowserRouter as Router , Routes , Route} from 'react-router-dom'
 import Home from './Component/Home'
 import Footer from './Component/Footer'
 import Form from './Component/Form'
-
+import Login from './Component/AdminPages/Login'
+import Dashbord from '././Component/AdminPages/Dashbord'
 const Links =[
   {
     path: '/',
     element : <Home/>
+  },
+  {
+    path : '/adminlogin',
+    element : <Login />
+  },
+  {
+    path : "/admindashboard",
+    element : <Dashbord />
   }
 ]
 
@@ -16,15 +25,16 @@ const App = () => {
   return (
     <Router>
       <Header />
-        <Routes>
+          <Routes>
             {
               Links.map((item)=>{
                 return <Route path={item.path} element={item.element}  />
               })
             }
-        </Routes>
+          </Routes>
         <Footer />
-    </Router>    
+    </Router>
+    
   )
 }
 

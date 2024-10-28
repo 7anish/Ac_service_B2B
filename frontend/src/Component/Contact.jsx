@@ -1,7 +1,92 @@
-import React from 'react'
+import React ,{ useState }from 'react'
 import img from '../assets/image1.jpeg'
+import Swal from 'sweetalert2'
+import axios from 'axios'
+import { TbLoader3 } from "react-icons/tb";
 
 const Contact = () => {
+    const [isprocessing, setisprocessing] = useState(false)
+    const checkphoneNumber = (phone) => {
+        return /^[6-9]{1}[0-9]{9}$/.test(phone);
+    };
+
+    // check email
+    const checkmail = (email) => {
+        return /^[a-z0-9\._%+\-]+@[a-z0-9\.\-]+\.[a-z]{1,}[^\._%+\-,!@#$%^&*()0-9{}<>?:"<;'|/\\=_]$/.test(
+            email
+        );
+    };
+
+    // check shope name and owner name
+    const checkname = (name) => {
+        return /^[a-zA-Z]{1}[a-zA-Z\s]{2,}$/.test(name);
+    };
+
+    //check others
+    const checkothers = (value) => {
+        return /^(?!\s*$).+/.test(value);
+    };
+
+
+    const sumbitForm = async (e) => {
+        e.preventDefault()
+        setisprocessing(true)
+        const detail = {
+            name : e.target.name.value,
+            phoneNumber : e.target.Phone.value,
+            email : e.target.mail.value,
+            message : e.target.message.value,
+        }
+
+
+        if (
+            checkmail(e.target.mail.value) &&
+            checkphoneNumber(e.target.Phone.value) &&
+            checkname(e.target.name.value) &&
+            checkothers(e.target.message.value)
+        ) {
+        }
+        else {
+            Swal.fire("Enter All the fields Properly");
+            setisprocessing(false)
+            return
+        }
+        try {
+            const res = await axios.post("http://localhost:8000/api/v1/contact/createcontact", detail)
+
+            if (res.status == 201) {
+                Swal.fire({
+                    title: "Message Sent Sucessfully",
+                    text: "One of our executive contact you soon",
+                    icon: "success"
+                });
+
+                e.target.name.value = "",
+                e.target.Phone.value = "",
+                e.target.mail.value = "",
+                e.target.message.value = "",
+                setisprocessing(false)
+                return;
+
+            } else {
+                Swal.fire({
+                    title: "Error In sending Message",
+                    text: "Please Try after some time",
+                    icon: "error"
+                });
+                setisprocessing(false)
+                return
+            }
+        } catch (e) {
+            console.log(e)
+            Swal.fire({
+                title: "Error In sending Message",
+                text: "Please Try after some time",
+                icon: "error"
+            });
+            setisprocessing(false)
+        }
+    }
     return (
         <section class="md:pt-10 md:pb-10 mb-10 sm:mb-0  bg-white sm:bg-custom-gradient" id='contact'>
             <div class="mx-auto max-w-full md:px-28 px-3">
@@ -38,14 +123,21 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    <div class="bg-gray-50 p-5 lg:p-11">
-                        <h2 class="text-orange-500 text-4xl font-semibold leading-10 mb-11 font-popines">Send Us A Message</h2>
-                        <input type="text" class="w-full h-12 text-gray-600 placeholder-gray-400  shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Name" />
-                        <input type="text" class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Email" />
-                        <input type="text" class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Phone" />
-                        <input type="text" class="w-full h-12 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Message" />
-                        <button class="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-orange-400 bg-orange-600 shadow-sm">Send</button>
-                    </div>
+                    <form class="bg-gray-50 p-5 lg:p-11" onSubmit={(e)=> sumbitForm(e)}>
+                        <h2 class="text-orange-500 text-3xl sm:text-4xl font-semibold leading-10 mb-11 font-popines">Send Us A Message</h2>
+                        <input name='name' type="text" class="w-full h-12 text-gray-600 placeholder-gray-400  shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Name" />
+                        <input name='mail' type="text" class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Email" />
+                        <input name='Phone' type="text" class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Phone" />
+                        <input name='message' type="text" class="w-full h-12 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10" placeholder="Message" />
+                        <button class="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-orange-400 bg-orange-600 shadow-sm">{isprocessing? (
+                                <div className='w-full h-full flex justify-center items-center'>
+                                <TbLoader3  className='animate-spin' size={30}/>
+                                </div>
+                            ):
+                            "Submit"
+                            }
+                            </button>
+                    </form>
                 </div>
             </div>
         </section>

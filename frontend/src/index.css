@@ -6,3 +6,7 @@
     scroll-behavior: smooth;
     scroll-padding: 5px;
 }
+
+.dash::-webkit-scrollbar {
+    display: none;
+}
