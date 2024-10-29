@@ -13,7 +13,7 @@ const Footer = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-8 py-10 max-sm:max-w-sm max-sm:mx-auto gap-y-8">
                     <div className="col-span-full mb-10 lg:col-span-2 lg:mb-0">
                         <img src={logo} alt="" className='md:w-40 w-28 cursor-pointer md:items-start items-center' />
-                        <p className="py-8 text-sm text-white lg:max-w-xs text-center lg:text-left font-bold font-popines">Trusted By 27+ Coustumers With 10 year of exprinces</p>
+                        <p className="py-8 text-sm text-white lg:max-w-xs text-center lg:text-left font-bold font-popines">Trusted By 27k+ Coustumers With 10 year of exprinces</p>
                     </div>
                     <div className="lg:mx-auto text-left font-popines">
                         <h4 className="text-lg text-white font-medium mb-7">Usefull Links</h4>
@@ -37,7 +37,7 @@ const Footer = () => {
                         <h4 className="text-lg text-white font-medium mb-7">Contact</h4>
                         <li className="w-full  mb-6 flex items-center justify-start gap-1 text-gray-300 font-medium"><FaPhoneAlt />+91 8376996688</li>
                         <li className="mb-6 flex items-center justify-center gap-1 text-gray-300 font-medium"><MdEmail />installationworld5858@gmail.com</li>
-                        <li className="mb-6 flex items-center justify-center gap-1 text-gray-300 font-medium text-sm"><MdLocationOn size={24}/>F 48 Shopping Centre 1 Mansar-over Garden New Delhi 110015</li>
+                        <li className="mb-6 flex items-center justify-center gap-1 text-gray-300 font-medium text-sm"><MdLocationOn size={24}/>F 48 Shopping Centre 1 Mansarovar Garden New Delhi 110015</li>
                     </div>
                 </div>
                 <div className="py-7 border-t border-gray-200">

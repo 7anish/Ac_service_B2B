@@ -162,7 +162,7 @@ const Services = () => {
             <div className="w-full h-fit rounded-3xl flex flex-col justify-between items-center py-7 px-4">
                 <div className="w-full h-[20%] flex flex-col justify-center items-center">
                     <h1 className="font-palyfair text-2xl md:text-4xl lg:text-5xl font-bold text-[#fb823f]" data-aos="fade-up"><span className="text-4xl md:text-5xl lg:text-6xl">O</span>ur Services</h1>
-                    <p className="w-[95%] md:w-[80%] sm:text-center text-justify mt-4 px-4 font-roboto font-light sm:text-sm md:text-lg text-black" data-aos="fade-up">Installation World company provides complete home appliances service. <span className="text-xl font-semibold text-[#fb823f]">Installation World</span>  is at your service for the last five years mostly we provide ac service repair & installation, refrigerator repair, washing wachine reapir etc our technicians are verified and experienced.</p>
+                    <p className="w-[95%] md:w-[80%] sm:text-center text-justify mt-4 px-4 font-roboto font-light sm:text-sm md:text-lg text-black" data-aos="fade-up">Installation World company provides complete home appliances service. <span className="text-xl font-semibold text-[#fb823f]">Installation World</span>  is at your service for the last Ten years mostly we provide ac service repair & installation our technicians are verified and experienced.</p>
                 </div>
                 <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Ac Installation Services</h1>
                 <div className='w-full h-fit  py-10 flex flex-wrap items-center justify-center gap-4' id='services'>
