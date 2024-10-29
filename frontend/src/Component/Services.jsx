@@ -225,7 +225,7 @@ const Services = () => {
                                 <input type="text" name='servicetype' readOnly value={servicetype} className='w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' />
                                 :
                                 <select className='w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' name='servicetype'>
-                                    <option value="">Select City</option>
+                                    <option value="">Select Service</option>
                                     <option value="AC Service">AC Service</option>
                                     <option value="Repair Service">Repair Service</option>
                                     <option value="Uninstallation Service">Uninstallation Service</option>
