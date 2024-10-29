@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import windowac from '../assets/window-ac.png'
 import ac from '../assets/air-conditioner.png'
 import split from '../assets/split.png'
@@ -12,19 +12,9 @@ import { TbLoader3 } from "react-icons/tb";
 
 const installationservices = [
     {
-        name: "Ductable AC",
-        image: ac,
-        backgroundColor: "#f0f8ff"  // Light blue
-    },
-    {
-        name: "VRF AC",
-        image: service,
-        backgroundColor: "#f9f0ff"  // Light purple
-    },
-    {
-        name: "Cassette AC",
-        image: center,
-        backgroundColor: "#f0fff4"  // Light green
+        name: "Window AC",
+        image: windowac,
+        backgroundColor: "#f0f0ff"  // Light gray-blue
     },
     {
         name: "Split Air Conditioners",
@@ -32,16 +22,26 @@ const installationservices = [
         backgroundColor: "#fffaf0"  // Light orange
     },
     {
-        name: "Window AC",
-        image: windowac,
-        backgroundColor: "#f0f0ff"  // Light gray-blue
-    }
+        name: "Cassette AC",
+        image: center,
+        backgroundColor: "#f0fff4"  // Light green
+    },
+    {
+        name: "VRF AC",
+        image: service,
+        backgroundColor: "#f9f0ff"  // Light purple
+    },
+    {
+        name: "Ductable AC",
+        image: ac,
+        backgroundColor: "#f0f8ff"  // Light blue
+    },
 ];
 const Services = () => {
     const [isopen, setisopen] = useState(false)
-    const [name , setname] = useState("none")
-    const [servicetype , setservicetype ] = useState("none")
-    const handleopen = (name , type) => {
+    const [name, setname] = useState("none")
+    const [servicetype, setservicetype] = useState("none")
+    const handleopen = (name, type) => {
         setname(name)
         setservicetype(type)
         setisopen(!isopen)
@@ -85,16 +85,16 @@ const Services = () => {
         e.preventDefault()
         setisprocessing(true)
         const detail = {
-            name : e.target.name.value,
-            phonenumber : e.target.Phone.value,
-            gmail : e.target.mail.value,
-            pincode : e.target.pincode.value,
-            city : e.target.city.value,
-            service : e.target.service.value,
-            servicetype : e.target.servicetype.value,
-            address : e.target.address.value,
-            houseNo : e.target.houseNo.value,
-            landmark : e.target.landmark.value
+            name: e.target.name.value,
+            phonenumber: e.target.Phone.value,
+            gmail: e.target.mail.value,
+            pincode: e.target.pincode.value,
+            city: e.target.city.value,
+            service: e.target.service.value,
+            servicetype: e.target.servicetype.value,
+            address: e.target.address.value,
+            houseNo: e.target.houseNo.value,
+            landmark: e.target.landmark.value
         }
 
         if (
@@ -126,14 +126,14 @@ const Services = () => {
                 });
 
                 e.target.name.value = "",
-                e.target.Phone.value = "",
-                e.target.mail.value = "",
-                e.target.pincode.value = "",
-                e.target.city.value = "",
-                e.target.servicetype.value = "",
-                e.target.address.value = "",
-                e.target.houseNo.value = "",
-                e.target.landmark.value=""
+                    e.target.Phone.value = "",
+                    e.target.mail.value = "",
+                    e.target.pincode.value = "",
+                    e.target.city.value = "",
+                    e.target.servicetype.value = "",
+                    e.target.address.value = "",
+                    e.target.houseNo.value = "",
+                    e.target.landmark.value = ""
                 setisprocessing(false)
                 setisopen(false)
                 return;
@@ -167,26 +167,26 @@ const Services = () => {
                 <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Ac Installation Services</h1>
                 <div className='w-full h-fit  py-10 flex flex-wrap items-center justify-center gap-4' id='services'>
                     {
-                        installationservices.map((item , i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Installation Services"} handleopen={handleopen}/>)
+                        installationservices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Installation Services"} handleopen={handleopen} />)
                     }
                 </div>
-                <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]"  data-aos="fade-up">Ac Services</h1>
+                <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Ac Service , Repair Service, Uninstallation Service</h1>
                 <div className='w-full h-fit  py-10 flex flex-wrap items-center justify-center gap-4' id='services'>
                     {
-                        installationservices.map((item , i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Services"} handleopen={handleopen}/>)
+                        installationservices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Service"} handleopen={handleopen} />)
                     }
                 </div>
                 <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Ac Gas Filling Services</h1>
                 <div className='w-full h-fit  py-10 flex flex-wrap items-center justify-center gap-4' id='services'>
                     {
-                        installationservices.map((item , i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Gas Filling Services"} handleopen={handleopen}/>)
+                        installationservices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Gas Filling Services"} handleopen={handleopen} />)
                     }
                 </div>
             </div>
-            <div className={`fixed top-0 w-full h-[100vh] bg-[#00000080] items-center justify-center gap-10 z-50 ${isopen ?"flex" :"hidden"}`}>
+            <div className={`fixed top-0 w-full h-[100vh] bg-[#00000080] items-center justify-center gap-10 z-50 ${isopen ? "flex" : "hidden"}`}>
                 <div className='w-[320px] sm:w-[500px] h-fit sm:py-10 bg-white rounded-md p-3 relative'>
-                    <form className='w-full h-full' onSubmit={(e)=> sumbitForm(e)}> 
-                        <RxCross2 fontSize={24} className='absolute top-1 right-1 cursor-pointer' onClick={()=> handleopen("none")} />
+                    <form className='w-full h-full' onSubmit={(e) => sumbitForm(e)}>
+                        <RxCross2 fontSize={24} className='absolute top-1 right-1 cursor-pointer' onClick={() => handleopen("none")} />
                         <h1 className='w-full text-center p-3 font-semibold text-xl font-popines'>{name}</h1>
                         <hr className='h-1 bg-black' />
                         <div className='flex flex-wrap gap-2 py-3 justify-center'>
@@ -194,7 +194,7 @@ const Services = () => {
                             <input type="tel" name='Phone' placeholder='10 digit Mobile Number' className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' />
                             <input type="email" name='mail' placeholder='Your Email' className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' />
                             <select className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' name='pincode'>
-                            <option value="">Select Pin Code</option>
+                                <option value="">Select Pin Code</option>
                                 <option value="110008">110008</option>
                                 <option value="110012">110012</option>
                                 <option value="110026">110026</option>
@@ -220,18 +220,28 @@ const Services = () => {
                                 <option value="Faridabad">Faridabad</option>
                                 <option value="Noida">Noida</option>
                             </select>
-                            <input type="text" name='service' readOnly value={name} className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400'/>
-                            <input type="text" name='servicetype' readOnly value={servicetype} className='w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400'/>
+                            <input type="text" name='service' readOnly value={name} className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' />
+                            {servicetype != "Ac Service" ?
+                                <input type="text" name='servicetype' readOnly value={servicetype} className='w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' />
+                                :
+                                <select className='w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' name='servicetype'>
+                                    <option value="">Select City</option>
+                                    <option value="AC Service">AC Service</option>
+                                    <option value="Repair Service">Repair Service</option>
+                                    <option value="Uninstallation Service">Uninstallation Service</option>
+                                </select>
+
+                            }
                             <input type="text" name='address' placeholder='Address' className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' />
                             <input type="text" name='houseNo' placeholder='House No./Building No.' className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' />
                             <input type="text" name='landmark' placeholder='Land Mark' className='w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' />
                             {/* <input type="submit" placeholder='Land Mark' className='w-[98%] h-10 p-2 font-roboto    bg-[#fb823f] cursor-pointer font-semibold text-lg text-white rounded-md' /> */}
-                            <button className={`w-[98%] h-10 p-2 font-roboto    bg-[#fb823f] cursor-pointer font-semibold text-lg text-white rounded-md`}>{isprocessing? (
+                            <button className={`w-[98%] h-10 p-2 font-roboto    bg-[#fb823f] cursor-pointer font-semibold text-lg text-white rounded-md`}>{isprocessing ? (
                                 <div className='w-full h-full flex justify-center'>
-                                <TbLoader3  className='animate-spin' size={24}/>
+                                    <TbLoader3 className='animate-spin' size={24} />
                                 </div>
-                            ):
-                            "Submit"
+                            ) :
+                                "Submit"
                             }</button>
                         </div>
 
@@ -243,9 +253,9 @@ const Services = () => {
     )
 }
 
-const Card = ({ image, heading, color , handleopen , type}) => {
+const Card = ({ image, heading, color, handleopen, type }) => {
     return (
-        <div data-aos="fade-up" className="w-[240px] h-[170px]  rounded-2xl  shadow-card flex flex-col justify-between items-center p-3 py-5 cursor-pointer duration-300 hover:shadow-2xl relative overflow-hidden gap-3" onClick={()=> handleopen(heading , type)}>
+        <div data-aos="fade-up" className="w-[240px] h-[170px]  rounded-2xl  shadow-card flex flex-col justify-between items-center p-3 py-5 cursor-pointer duration-300 hover:shadow-2xl relative overflow-hidden gap-3" onClick={() => handleopen(heading, type)}>
             <div className='w-full h-full absolute top-[10%] clip-path-service z-10'></div>
             <img src={image} alt="" className='w-[100px]rounded-lg bg-blue-100  p-2 rounded-xl' />
             <div className='h-[60%] flex flex-col items-center gap-4 z-20'>
