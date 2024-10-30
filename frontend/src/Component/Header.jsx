@@ -9,7 +9,7 @@ import logo from '../assets/iwlogo.png'
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail, MdLocationOn } from "react-icons/md";
 import { HashLink } from 'react-router-hash-link';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 
@@ -18,6 +18,7 @@ const Header = () => {
     const [open, setopen] = useState(false)
     const [dropdown, stedropdown] = useState(false)
     const [isadmin, setisadmin] = useState(false)
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -40,7 +41,7 @@ const Header = () => {
             </div>
             <nav className='w-full h-[10vh]  bg-white flex items-center justify-between  lg:px-20 sm:px-10 px-4 z-40'>
                 <div className='w-[80%]md:w-[50%] h-full flex items-center '>
-                    <img src={logo} alt="" className='w-32' />
+                    <Link to={'/'}><img src={logo} alt="" className='w-32 cursor-pointer'/></Link>
                 </div>
                 <div className='h-full flex items-center md:hidden'>
                     {open ? <RxCross2 fontSize={30} onClick={() => setopen(!open)} /> : <IoReorderThree fontSize={30} onClick={() => setopen(!open)} />}

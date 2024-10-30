@@ -37,6 +37,62 @@ const installationservices = [
         backgroundColor: "#f0f8ff"  // Light blue
     },
 ];
+
+const normalinstallationservices = [
+    {
+        name: "Window AC @499",
+        image: windowac,
+        backgroundColor: "#f0f0ff"  // Light gray-blue
+    },
+    {
+        name: "Split AC @1299",
+        image: split,
+        backgroundColor: "#fffaf0"  // Light orange
+    },
+    {
+        name: "Cassette AC",
+        image: center,
+        backgroundColor: "#f0fff4"  // Light green
+    },
+    {
+        name: "VRF AC",
+        image: service,
+        backgroundColor: "#f9f0ff"  // Light purple
+    },
+    {
+        name: "Ductable AC",
+        image: ac,
+        backgroundColor: "#f0f8ff"  // Light blue
+    },
+];
+
+const expressinstallationservices = [
+    {
+        name: "Window AC @699",
+        image: windowac,
+        backgroundColor: "#f0f0ff"  // Light gray-blue
+    },
+    {
+        name: "Split AC @1799",
+        image: split,
+        backgroundColor: "#fffaf0"  // Light orange
+    },
+    {
+        name: "Cassette AC",
+        image: center,
+        backgroundColor: "#f0fff4"  // Light green
+    },
+    {
+        name: "VRF AC",
+        image: service,
+        backgroundColor: "#f9f0ff"  // Light purple
+    },
+    {
+        name: "Ductable AC",
+        image: ac,
+        backgroundColor: "#f0f8ff"  // Light blue
+    },
+];
 const Services = () => {
     const [isopen, setisopen] = useState(false)
     const [name, setname] = useState("none")
@@ -161,13 +217,19 @@ const Services = () => {
         <>
             <div className="w-full h-fit rounded-3xl flex flex-col justify-between items-center py-7 px-4">
                 <div className="w-full h-[20%] flex flex-col justify-center items-center">
-                    <h1 className="font-palyfair text-2xl md:text-4xl lg:text-5xl font-bold text-[#fb823f]" data-aos="fade-up"><span className="text-4xl md:text-5xl lg:text-6xl">O</span>ur Services</h1>
+                    <h1 className="font-palyfair text-2xl md:text-4xl lg:text-5xl font-bold text-[#fb823f]" data-aos="fade-up"><span className="text-4xl md:text-5xl lg:text-6xl" >O</span>ur Services</h1>
                     <p className="w-[95%] md:w-[80%] sm:text-center text-justify mt-4 px-4 font-roboto font-light sm:text-sm md:text-lg text-black" data-aos="fade-up">Installation World company provides complete home appliances service. <span className="text-xl font-semibold text-[#fb823f]">Installation World</span>  is at your service for the last Ten years mostly we provide ac service repair & installation our technicians are verified and experienced.</p>
                 </div>
                 <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Ac Installation Services</h1>
                 <div className='w-full h-fit  py-10 flex flex-wrap items-center justify-center gap-4' id='services'>
                     {
-                        installationservices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Installation Services"} handleopen={handleopen} />)
+                        normalinstallationservices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Installation Services"} handleopen={handleopen} />)
+                    }
+                </div>
+                <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Express Ac Installation Services</h1>
+                <div className='w-full h-fit  py-10 flex flex-wrap items-center justify-center gap-4' id='services'>
+                    {
+                        expressinstallationservices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Installation Services"} handleopen={handleopen} />)
                     }
                 </div>
                 <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Ac Service , Repair Service, Uninstallation Service</h1>

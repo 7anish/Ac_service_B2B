@@ -4,8 +4,8 @@ const route = express.Router()
 const {checkisadmin} = require('../MiddleWare/auth')
 
 route.post('/createorder' , handleCreateOrder)
-route.patch('/updateorder/:id' , handleupdateorder)
-route.get('/getallorder' , handleGetOrder)
+route.patch('/updateorder/:id' , checkisadmin, handleupdateorder)
+route.get('/getallorder' ,checkisadmin, handleGetOrder)
 
 
 module.exports = route

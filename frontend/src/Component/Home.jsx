@@ -6,7 +6,7 @@ import Company from './Company'
 import Contact from './Contact'
 import About from './About'
 import Form from './Form'
-
+import About2 from './About2'
 const Home = () => {
   return (
     <>
@@ -14,6 +14,7 @@ const Home = () => {
         <Hero />
         <Services />
         <About />
+        <About2 />
         <Whyus />
         <Company />
         <Contact />
