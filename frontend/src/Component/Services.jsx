@@ -271,8 +271,8 @@ const Services = () => {
                                 <option value="110063">110063</option>
                                 <option value="110087">110087</option>
                                 <option value="110007">110007</option>
-                                <option value="110054">110054</option>
-                                <option value="110035">110025</option>
+                                <option value="110054">110034</option>
+                                <option value="110035">110035</option>
                                 <option value="110052">110052</option>
                             </select>
                             <select className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' name='city'>
