@@ -40,5 +40,6 @@ const checkissuperadmin = (req,res,next)=>{
 
 module.exports = {
     checkisadmin,
-    checkissuperadmin   
+    checkissuperadmin,
+    authenticate: checkisadmin   
 }

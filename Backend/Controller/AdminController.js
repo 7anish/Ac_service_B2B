@@ -1,36 +1,43 @@
 
 const admin = require('../Modal/AdminModal')
-const {generateToken} = require('../Config/Jwtauthentication');
+const { generateToken } = require('../Config/Jwtauthentication');
 
-const handleCreateAdmin = async (req , res)=>{
-    try{
+const handleCreateAdmin = async (req, res) => {
+    try {
         if (!req.body) return res.status(400).json({ error: "Body Not found" });
         const result = await admin.create({
-            name : req.body.name,
-            email : req.body.email,
+            name: req.body.name,
+            email: req.body.email,
             password: req.body.password,
         })
-        return res.status(201).json({Message : "Admin Created SucessFully Waiting For verification"})
-    }catch(e){
+        return res.status(201).json({ Message: "Admin Created SucessFully Waiting For verification" })
+    } catch (e) {
         console.log(e)
-        return res.status(500).json({error : "Internal Server Error"})
+        return res.status(500).json({ error: "Internal Server Error" })
     }
 }
 
-const handleLoginAsAdmin =async (req,res)=>{
+const handleLoginAsAdmin = async (req, res) => {
     try {
         const data = req.body
         if (!req.body) return res.status(400).json({ error: "Body Not found" });
-        const result = await admin.matchpassword( data.email , data.password);
+        // const result = await admin.matchpassword( data.email , data.password);
+        // if(result.role === 'NONE') return res.status(403).json({ error: "Unauthorised" });
 
-        if(result.role === 'NONE') return res.status(403).json({ error: "Unauthorised" });
-        const token = generateToken(result.email , result._id , result.role); // Generatin the Jwt tokern
-        
-        return res.status(200).json({ token : token});
+        if (data.email !== process.env.admin || data.password !== process.env.admin_password) return res.status(403).json({ error: "Unauthorised" });
 
-    }catch(e){
+        const result = {
+            email: process.env.admin,
+            _id: "admin_id",
+            role: "ADMIN"
+        }
+        const token = generateToken(result.email, result._id, result.role); // Generatin the Jwt tokern
+
+        return res.status(200).json({ token: token });
+
+    } catch (e) {
         console.log(e);
-        return res.status(400).json({error : "not found"});
+        return res.status(400).json({ error: "not found" });
     }
 }
 
