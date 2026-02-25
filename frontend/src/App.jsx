@@ -6,6 +6,8 @@ import Footer from './Component/Footer'
 import Form from './Component/Form'
 import Login from './Component/AdminPages/Login'
 import Dashbord from '././Component/AdminPages/Dashbord'
+import Privacy from './Component/Privacy'
+
 const Links =[
   {
     path: '/',
@@ -18,6 +20,10 @@ const Links =[
   {
     path : "/admindashboard",
     element : <Dashbord />
+  },
+  {
+    path : '/privacy',
+    element : <Privacy />
   }
 ]
 

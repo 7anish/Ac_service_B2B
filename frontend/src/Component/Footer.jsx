@@ -21,7 +21,8 @@ const Footer = () => {
                         <ul className="text-sm  transition-all duration-500">
                             <li className="mb-6"><a href="./#" className="text-gray-300 font-medium hover:text-orange-600 duration-300">Home</a></li>
                             <li className="mb-6"><a href="./#about" className=" text-gray-300 font-medium hover:text-orange-600 duration-300">About</a></li>
-                            <li><a href="./#contact" className=" text-gray-300 font-medium hover:text-orange-600 duration-300">Contact</a></li>
+                            <li className="mb-6"><a href="./#contact" className=" text-gray-300 font-medium hover:text-orange-600 duration-300">Contact</a></li>
+                            <li><a href="./privacy" className=" text-gray-300 font-medium hover:text-orange-600 duration-300">Privacy Policy</a></li>
                         </ul>
                     </div>
                     <div className="lg:mx-auto text-left font-popines">
