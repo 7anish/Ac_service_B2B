@@ -1,102 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import windowac from '../assets/window-ac.png'
-import ac from '../assets/air-conditioner.png'
-import split from '../assets/split.png'
-import center from '../assets/center.png'
-import service from '../assets/service.png'
 import { RxCross2 } from "react-icons/rx";
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { TbLoader3 } from "react-icons/tb";
 
-
-const installationservices = [
-    {
-        name: "Window AC",
-        image: windowac,
-        backgroundColor: "#f0f0ff"  // Light gray-blue
-    },
-    {
-        name: "Split Air Conditioners",
-        image: split,
-        backgroundColor: "#fffaf0"  // Light orange
-    },
-    {
-        name: "Cassette AC",
-        image: center,
-        backgroundColor: "#f0fff4"  // Light green
-    },
-    {
-        name: "VRF AC",
-        image: service,
-        backgroundColor: "#f9f0ff"  // Light purple
-    },
-    {
-        name: "Ductable AC",
-        image: ac,
-        backgroundColor: "#f0f8ff"  // Light blue
-    },
-];
-
-const normalinstallationservices = [
-    {
-        name: "Window AC @499",
-        image: windowac,
-        backgroundColor: "#f0f0ff"  // Light gray-blue
-    },
-    {
-        name: "Split AC @1299",
-        image: split,
-        backgroundColor: "#fffaf0"  // Light orange
-    },
-    {
-        name: "Cassette AC",
-        image: center,
-        backgroundColor: "#f0fff4"  // Light green
-    },
-    {
-        name: "VRF AC",
-        image: service,
-        backgroundColor: "#f9f0ff"  // Light purple
-    },
-    {
-        name: "Ductable AC",
-        image: ac,
-        backgroundColor: "#f0f8ff"  // Light blue
-    },
-];
-
-const expressinstallationservices = [
-    {
-        name: "Window AC @699",
-        image: windowac,
-        backgroundColor: "#f0f0ff"  // Light gray-blue
-    },
-    {
-        name: "Split AC @1799",
-        image: split,
-        backgroundColor: "#fffaf0"  // Light orange
-    },
-    {
-        name: "Cassette AC",
-        image: center,
-        backgroundColor: "#f0fff4"  // Light green
-    },
-    {
-        name: "VRF AC",
-        image: service,
-        backgroundColor: "#f9f0ff"  // Light purple
-    },
-    {
-        name: "Ductable AC",
-        image: ac,
-        backgroundColor: "#f0f8ff"  // Light blue
-    },
-];
 const Services = () => {
     const [isopen, setisopen] = useState(false)
     const [name, setname] = useState("none")
     const [servicetype, setservicetype] = useState("none")
+    const [loading, setLoading] = useState(true)
+    
+    // Dynamic data states
+    const [normalInstallationServices, setNormalInstallationServices] = useState([])
+    const [pincodes, setPincodes] = useState([])
+    const [cities, setCities] = useState([])
+
     const handleopen = (name, type) => {
         setname(name)
         setservicetype(type)
@@ -106,6 +24,50 @@ const Services = () => {
     useEffect(() => {
         document.body.style.overflowY = isopen ? "hidden" : "scroll"
     }, [isopen])
+
+    // Fetch services and pincodes on component mount
+    useEffect(() => {
+        fetchServices()
+        fetchPincodes()
+        fetchCities()
+    }, [])
+
+    const fetchServices = async () => {
+        try {
+            const response = await axios.get('https://installationworld.yaytech.in/api/v1/service/getall')
+            if (response.data.success) {
+                const services = response.data.services
+                // All services in one list
+                setNormalInstallationServices(services)
+            }
+            setLoading(false)
+        } catch (error) {
+            console.error('Error fetching services:', error)
+            setLoading(false)
+        }
+    }
+
+    const fetchPincodes = async () => {
+        try {
+            const response = await axios.get('https://installationworld.yaytech.in/api/v1/pincode/getall')
+            if (response.data.success) {
+                setPincodes(response.data.pincodes)
+            }
+        } catch (error) {
+            console.error('Error fetching pincodes:', error)
+        }
+    }
+
+    const fetchCities = async () => {
+        try {
+            const response = await axios.get('https://installationworld.yaytech.in/api/v1/pincode/cities')
+            if (response.data.success) {
+                setCities(response.data.cities)
+            }
+        } catch (error) {
+            console.error('Error fetching cities:', error)
+        }
+    }
 
 
     const [isprocessing, setisprocessing] = useState(false)
@@ -156,7 +118,7 @@ const Services = () => {
         if (
             checkmail(e.target.mail.value) &&
             checkphoneNumber(e.target.Phone.value) &&
-            checkpincode(e.target.pincode.value) &&
+            checkothers(e.target.pincode.value) &&
             checkname(e.target.name.value) &&
             checkothers(e.target.city.value) &&
             checkothers(e.target.service.value) &&
@@ -172,7 +134,7 @@ const Services = () => {
             return
         }
         try {
-            const res = await axios.post("https://acservice-production.up.railway.app/api/v1/order/createorder", detail)
+            const res = await axios.post("https://installationworld.yaytech.in/api/v1/order/createorder", detail)
 
             if (res.status == 201) {
                 Swal.fire({
@@ -213,6 +175,14 @@ const Services = () => {
             setisprocessing(false)
         }
     }
+
+    if (loading) {
+        return (
+            <div className="w-full h-screen flex justify-center items-center">
+                <TbLoader3 className="animate-spin" size={48} />
+            </div>
+        )
+    }
     return (
         <>
             <div className="w-full h-fit rounded-3xl flex flex-col justify-between items-center py-7 px-4">
@@ -220,29 +190,13 @@ const Services = () => {
                     <h1 className="font-palyfair text-2xl md:text-4xl lg:text-5xl font-bold text-[#fb823f]" data-aos="fade-up"><span className="text-4xl md:text-5xl lg:text-6xl" >O</span>ur Services</h1>
                     <p className="w-[95%] md:w-[80%] sm:text-center text-justify mt-4 px-4 font-roboto font-light sm:text-sm md:text-lg text-black" data-aos="fade-up">Installation World company provides complete home appliances service. <span className="text-xl font-semibold text-[#fb823f]">Installation World</span>  is at your service for the last Ten years mostly we provide ac service repair & installation our technicians are verified and experienced.</p>
                 </div>
-                <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Ac Installation Services</h1>
+                {/* <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Our AC Services</h1> */}
                 <div className='w-full h-fit  py-10 flex flex-wrap items-center justify-center gap-4' id='services'>
-                    {
-                        normalinstallationservices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Installation Services"} handleopen={handleopen} />)
-                    }
-                </div>
-                <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Express Ac Installation Services</h1>
-                <div className='w-full h-fit  py-10 flex flex-wrap items-center justify-center gap-4' id='services'>
-                    {
-                        expressinstallationservices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Installation Services"} handleopen={handleopen} />)
-                    }
-                </div>
-                <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Ac Service , Repair Service, Uninstallation Service</h1>
-                <div className='w-full h-fit  py-10 flex flex-wrap items-center justify-center gap-4' id='services'>
-                    {
-                        installationservices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Service"} handleopen={handleopen} />)
-                    }
-                </div>
-                <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-[#fb823f]" data-aos="fade-up">Ac Gas Filling Services</h1>
-                <div className='w-full h-fit  py-10 flex flex-wrap items-center justify-center gap-4' id='services'>
-                    {
-                        installationservices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"Ac Gas Filling Services"} handleopen={handleopen} />)
-                    }
+                    {normalInstallationServices.length > 0 ? (
+                        normalInstallationServices.map((item, i) => <Card key={i} image={item.image} heading={item.name} color={item.backgroundColor} type={"AC Service"} features={item.features} handleopen={handleopen} />)
+                    ) : (
+                        <p className="text-gray-500">No services available</p>
+                    )}
                 </div>
             </div>
             <div className={`fixed top-0 w-full h-[100vh] bg-[#00000080] items-center justify-center gap-10 z-50 ${isopen ? "flex" : "hidden"}`}>
@@ -257,30 +211,15 @@ const Services = () => {
                             <input type="email" name='mail' placeholder='Your Email' className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' />
                             <select className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' name='pincode'>
                                 <option value="">Select Pin Code</option>
-                                <option value="110008">110008</option>
-                                <option value="110012">110012</option>
-                                <option value="110026">110026</option>
-                                <option value="110027">110027</option>
-                                <option value="110028">110028</option>
-                                <option value="110015">110015</option>
-                                <option value="110018">110018</option>
-                                <option value="110046">110046</option>
-                                <option value="110058">110058</option>
-                                <option value="110060">110060</option>
-                                <option value="110064">110064</option>
-                                <option value="110063">110063</option>
-                                <option value="110087">110087</option>
-                                <option value="110007">110007</option>
-                                <option value="110054">110034</option>
-                                <option value="110035">110035</option>
-                                <option value="110052">110052</option>
+                                {pincodes.map((pin) => (
+                                    <option key={pin._id} value={pin.pincode}>{pin.pincode}</option>
+                                ))}
                             </select>
                             <select className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' name='city'>
                                 <option value="">Select City</option>
-                                <option value="Ghaziabad">Ghaziabad</option>
-                                <option value="Delhi">Delhi</option>
-                                <option value="Faridabad">Faridabad</option>
-                                <option value="Noida">Noida</option>
+                                {cities.map((city, index) => (
+                                    <option key={index} value={city}>{city}</option>
+                                ))}
                             </select>
                             <input type="text" name='service' readOnly value={name} className='md:w-[48%] w-[98%] h-10 p-2 font-roboto  text-sm border-2 border-gray-400' />
                             {servicetype != "Ac Service" ?
@@ -315,13 +254,31 @@ const Services = () => {
     )
 }
 
-const Card = ({ image, heading, color, handleopen, type }) => {
+const Card = ({ image, heading, color, handleopen, type, features }) => {
     return (
-        <div data-aos="fade-up" className="w-[240px] h-[170px]  rounded-2xl  shadow-card flex flex-col justify-between items-center p-3 py-5 cursor-pointer duration-300 hover:shadow-2xl relative overflow-hidden gap-3" onClick={() => handleopen(heading, type)}>
+        <div data-aos="fade-up" className="w-[350px] h-[520px] rounded-2xl shadow-card flex flex-col items-start cursor-pointer duration-300 hover:shadow-2xl relative overflow-hidden" onClick={() => handleopen(heading, type)}>
             <div className='w-full h-full absolute top-[10%] clip-path-service z-10'></div>
-            <img src={image} alt="" className='w-[100px]rounded-lg bg-blue-100  p-2 rounded-xl' />
-            <div className='h-[60%] flex flex-col items-center gap-4 z-20'>
-                <h1 className='text-lg font-semibold text-center z-20 font-popines'>{heading}</h1>
+            <div className='w-full h-[200px] flex justify-center items-center z-20'>
+                <img src={image} alt="" className=' object-contain rounded-lg bg-blue-100' />
+            </div>
+            <div className='w-full flex flex-col gap-3 z-20 p-6 flex-1'>
+                <h1 className='text-xl font-bold text-left z-20 font-popines'>{heading}</h1>
+                {features && features.length > 0 && (
+                    <ul className='list-none space-y-2 flex-1 overflow-y-auto'>
+                        {features.map((feature, index) => (
+                            <li key={index} className='flex items-start gap-2 text-sm'>
+                                <span className='text-[#fb823f] text-lg'>✓</span>
+                                <span className='text-gray-700'>{feature}</span>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+                <button className='mt-auto bg-[#fb823f] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#e67332] transition' onClick={(e) => {
+                    e.stopPropagation();
+                    handleopen(heading, type);
+                }}>
+                    Enquiry now
+                </button>
             </div>
         </div>
     )

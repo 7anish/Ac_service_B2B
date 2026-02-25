@@ -52,7 +52,7 @@ const Contact = () => {
             return
         }
         try {
-            const res = await axios.post("https://acservice-production.up.railway.app/api/v1/contact/createcontact", detail)
+            const res = await axios.post("https://installationworld.yaytech.in/api/v1/contact/createcontact", detail)
 
             if (res.status == 201) {
                 Swal.fire({

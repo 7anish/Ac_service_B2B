@@ -5,8 +5,8 @@ const {checkisadmin} = require('../MiddleWare/auth')
 
 route.post('/requestcallback' , handleCallBackRequest)
 route.post('/createcontact' , handleCreateContact)
-route.patch('/updatestatus/:id', checkisadmin,handleupdatecontact)
-route.get('/getcontactlist' , checkisadmin,handleGetContact)
+route.patch('/updatestatus/:id',handleupdatecontact)
+route.get('/getcontactlist',handleGetContact)
 
 
 module.exports = route
