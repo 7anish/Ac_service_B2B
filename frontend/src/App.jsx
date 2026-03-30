@@ -7,24 +7,25 @@ import Form from './Component/Form'
 import Login from './Component/AdminPages/Login'
 import Dashbord from '././Component/AdminPages/Dashbord'
 import Privacy from './Component/Privacy'
+import PaymentDue from './Component/PaymentDue'
 
 const Links =[
   {
     path: '/',
-    element : <Home/>
+    element : <PaymentDue/>
   },
-  {
-    path : '/adminlogin',
-    element : <Login />
-  },
-  {
-    path : "/admindashboard",
-    element : <Dashbord />
-  },
-  {
-    path : '/privacy',
-    element : <Privacy />
-  }
+  // {
+  //   path : '/adminlogin',
+  //   element : <Login />
+  // },
+  // {
+  //   path : "/admindashboard",
+  //   element : <Dashbord />
+  // },
+  // {
+  //   path : '/privacy',
+  //   element : <Privacy />
+  // }
 ]
 
 const App = () => {
