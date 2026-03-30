@@ -26,13 +26,12 @@ function PaymentDue() {
 
         {/* Title */}
         <h1 className="text-3xl font-bold text-gray-800 mb-3">
-          Payment Due
+          Pending Payment of Installation World
         </h1>
 
         {/* Subtitle */}
         <p className="text-gray-600 mb-6">
-          Your service is currently on hold due to pending payment.
-          Please contact the developer to continue using the system.
+          Service of Installation World is paused due the pending payment. once payment is received, we will resume our services immediately. We apologize for any inconvenience and appreciate your understanding.
         </p>
 
         {/* Divider */}
@@ -63,7 +62,7 @@ function PaymentDue() {
 
         {/* Footer Note */}
         <p className="text-sm text-gray-400 mt-6">
-          Installation World • Service Management System
+            Website will be accessible once payment is received. Thank you for your understanding.
         </p>
       </div>
     </div>
