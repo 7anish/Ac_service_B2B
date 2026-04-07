@@ -12,20 +12,20 @@ import PaymentDue from './Component/PaymentDue'
 const Links =[
   {
     path: '/',
-    element : <PaymentDue/>
+    element : <Home/>
   },
-  // {
-  //   path : '/adminlogin',
-  //   element : <Login />
-  // },
-  // {
-  //   path : "/admindashboard",
-  //   element : <Dashbord />
-  // },
-  // {
-  //   path : '/privacy',
-  //   element : <Privacy />
-  // }
+  {
+    path : '/adminlogin',
+    element : <Login />
+  },
+  {
+    path : "/admindashboard",
+    element : <Dashbord />
+  },
+  {
+    path : '/privacy',
+    element : <Privacy />
+  }
 ]
 
 const App = () => {
